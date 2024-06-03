@@ -11,6 +11,7 @@ import JSONCrush from "jsoncrush";
 import {toast} from "react-toastify";
 import {compressToEncodedURIComponent} from "lz-string";
 import {FormattedMessage} from "react-intl";
+import { compressGroupList } from "../../Import/Utils.js";
 
 export const ExportarGrupos = ({theme, linkCopySuccess, }) => {
 
@@ -42,8 +43,22 @@ export const ExportarGrupos = ({theme, linkCopySuccess, }) => {
   }
 
   const generateLink = () => {
-    const groupList = JSON.stringify(getGroupList());
+    // const test = getGroupList();
+    // const testCompresse = compressGroupList(test);
+    // const testUncompress = unCompressGroupList(testCompresse);
+    // console.log("Comprimido: ")
+    // console.log(testCompresse)
+    // console.log("Descomprimido")
+    // console.log(testUncompress)
+    // console.log("Mismo del inicio?:" + (JSON.stringify(testUncompress) === JSON.stringify(test)))
+
+    const groupList = JSON.stringify(compressGroupList(getGroupList()));
     const groupListToJSONCrush = compressToEncodedURIComponent(JSONCrush.crush((groupList)));
+    // const groupListToJSONCrushUncompress = compressToEncodedURIComponent(JSONCrush.crush((JSON.stringify(getGroupList()))));
+
+    // console.log("Tamaño comprimido: " + groupListToJSONCrush.length)
+    // console.log("Tamaño descomprimido: " + groupListToJSONCrushUncompress.length)
+
     return window.location.href + "#/import/?groupList=" + groupListToJSONCrush;
   }
 

@@ -2,6 +2,7 @@ import {useSearchParams} from "react-router-dom";
 import {replaceGroupList} from "../../Data/groupManager.js";
 import JSONCrush from "jsoncrush";
 import {decompressFromEncodedURIComponent} from "lz-string";
+import { unCompressGroupList } from "./Utils.js";
 
 export default function ImportGroupList(){
 
@@ -9,7 +10,7 @@ export default function ImportGroupList(){
 
   try{
     const searchGroup = params.get("groupList")
-    const groupList = JSON.parse((JSONCrush.uncrush(decompressFromEncodedURIComponent(searchGroup))))
+    const groupList = unCompressGroupList(JSON.parse((JSONCrush.uncrush(decompressFromEncodedURIComponent(searchGroup)))))
     console.log("Decodificada: ")
     console.log(groupList)
 
