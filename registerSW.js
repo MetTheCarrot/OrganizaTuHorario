@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://santihsilva.github.io/OrganizaTuHorario/sw.js', { scope: 'https://santihsilva.github.io/OrganizaTuHorario/' })})}
