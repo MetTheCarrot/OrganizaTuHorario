@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "studio.jhonson.oth.twa",
+        "sha256_cert_fingerprints": ["81:93:1A:B8:EA:67:AF:19:79:D0:17:B1:1D:0C:93:19:55:5B:EC:7D:E3:97:9A:39:2B:E6:C6:85:42:82:59:AA"]
+      }
+    }]
