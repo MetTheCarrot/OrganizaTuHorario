@@ -3,6 +3,7 @@
   "short_name": "Organiza Tu Horario",
   "id": "dev.carrotw.organizatuhorario",
   "display": "fullscreen",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icons/android-launchericon-512-512.png",
