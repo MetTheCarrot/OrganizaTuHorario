@@ -76,6 +76,18 @@ function addGroupToSystem(name = "", color = ""){
   addSessionStorageGroup(globalGroupList);
 }
 
+function duplicateGroup(idGroup = 0){
+  const grupo = getGroupById(idGroup);
+  const newGroup = {
+    key: getNextIdForANewGroup(),
+    name: grupo.name + ' (Copia)',
+    color: grupo.color,
+    materias: grupo.materias,
+  };
+  globalGroupList.push(newGroup);
+  addSessionStorageGroup(globalGroupList);
+}
+
 function addSessionStorageGroup(newGroupList = []){
   window.sessionStorage.setItem("groupList", JSON.stringify(newGroupList));
 }
@@ -93,5 +105,6 @@ export {
   modifyMaterias,
   replaceGroupList,
   existGroups,
+  duplicateGroup,
   globalGroupList
 };

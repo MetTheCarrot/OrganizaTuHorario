@@ -1,7 +1,8 @@
-import {deleteSpecifiedGroup} from "../../../Data/groupManager.js";
+import {deleteSpecifiedGroup, duplicateGroup} from "../../../Data/groupManager.js";
 import Swal from "sweetalert2";
 import {memo, useEffect, useState} from "react";
 import {FaEdit, FaTrashAlt} from "react-icons/fa";
+import { HiDocumentDuplicate } from "react-icons/hi";
 import {adaptColorByHexColor} from "../../../Utils/Utils.js";
 import {SubgroupDashboard} from "../SubGroups/SubgroupDashboard.jsx";
 import {toast} from "react-toastify";
@@ -54,6 +55,22 @@ function MostrarGrupos({toggleUpdate, data, theme, messages}){
     });
   }
 
+  function handleDuplicationGroup(idGroupToDuplicate) {
+    duplicateGroup(idGroupToDuplicate);
+    toggleUpdate();
+    toast.info(
+      `Grupo duplicado correctamente`,
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        pauseOnHover: false,
+        closeOnClick: true, draggable: true,
+        theme: theme
+      })
+
+  }
+
   let groupCarts = data.map((group) => (
       <div className="d-flex mb-2 rounded p-1 shadow"
            key={group.key}
@@ -104,6 +121,17 @@ function MostrarGrupos({toggleUpdate, data, theme, messages}){
             }}
             onClick={() => {
               eliminarGrupo(group.key, group.name)
+            }}
+          />
+          <HiDocumentDuplicate 
+            size={25}
+            className='borrarGrupo OTHGroupBtn'
+            style={{
+              cursor: 'pointer',
+              transition: 'all 0.2s ease-in-out',
+            }}
+            onClick={() => {
+              handleDuplicationGroup(group.key)
             }}
           />
         </div>
